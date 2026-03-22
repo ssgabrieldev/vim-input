@@ -72,7 +72,7 @@ function setupVimEditor(target) {
 
   view = new EditorView({
     state: EditorState.create({
-      doc: ['INPUT', "DIV"].includes(target.tagName) ? target.value : target.textContent,
+      doc: ['INPUT', "TEXTAREA"].includes(target.tagName) ? target.value : target.textContent,
       extensions: [
         vim(),
         basicSetup,
