@@ -10,7 +10,12 @@ function saveAndClose(target) {
   if (!view || !hostElement) return;
 
   const content = view.state.doc.toString();
-  target.value = content;
+
+  if (["DIV", "TEXTAREA"].includes(target.tagName)) {
+    target.value = content;
+  } else {
+    target.textContent = content;
+  }
 
   target.dispatchEvent(new Event('input', { bubbles: true }));
   target.dispatchEvent(new Event('change', { bubbles: true }));
@@ -67,7 +72,7 @@ function setupVimEditor(target) {
 
   view = new EditorView({
     state: EditorState.create({
-      doc: target.value,
+      doc: ['INPUT', "DIV"].includes(target.tagName) ? target.value : target.textContent,
       extensions: [
         vim(),
         basicSetup,
@@ -97,7 +102,7 @@ function setupVimEditor(target) {
 document.addEventListener('keydown', (e) => {
   if (e.ctrlKey && e.key === 'i') {
     const el = document.activeElement;
-    if ((el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') && !hostElement) {
+    if ((['INPUT', "DIV", 'TEXTAREA'].includes(el.tagName)) && !hostElement) {
       e.preventDefault();
       setupVimEditor(el);
     }
