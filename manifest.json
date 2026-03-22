@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Vim Input",
+  "version": "1.1",
+  "description": "Edit input/textarea with Vim motions using Ctrl+I",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "dist/content.js"
+      ]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "vim-input@extension.com",
+      "strict_min_version": "109.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  }
+}
