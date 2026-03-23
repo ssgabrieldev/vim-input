@@ -1,6 +1,6 @@
 {
   "name": "vim-input",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "scripts": {
     "build": "esbuild src/content.js --bundle --minify --outfile=dist/content.js",
     "publish": "web-ext sign --channel=unlisted --api-key=$API_KEY --api-secret=$API_SECRET"

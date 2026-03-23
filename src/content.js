@@ -102,8 +102,8 @@ function setupVimEditor(target) {
   view.focus();
 }
 
-document.addEventListener("keydown", (e) => {
-  if (e.ctrlKey && e.key === "i") {
+document.addEventListener("keyup", (e) => {
+  if (e.ctrlKey && e.key === ";") {
     const el = document.activeElement;
     if ((["INPUT", "TEXTAREA", "DIV"].includes(el.tagName)) && !hostElement) {
       e.preventDefault();
@@ -124,4 +124,4 @@ Vim.defineEx("write", "w", () => {
 });
 
 Vim.map("<C-;>", "<Esc>", "insert");
-Vim.map("<C-;>", ":w<CR>", "normal");
+Vim.map("<C-;>", ":w", "normal");
