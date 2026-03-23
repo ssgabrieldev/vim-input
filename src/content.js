@@ -41,7 +41,7 @@ function setupVimEditor(target) {
     position: "absolute",
     top: `${rect.top + window.scrollY}px`,
     left: `${rect.left + window.scrollX}px`,
-    zIndex: "1000",
+    zIndex: "10000",
   });
 
   const container = document.createElement("div");
